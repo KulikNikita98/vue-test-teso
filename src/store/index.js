@@ -5,8 +5,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    books: [],
   },
   mutations: {
+    // deleteBook(state, payload) {
+
+    // },
+    // addBook(state, payload) {
+
+    // },
   },
   actions: {
   },

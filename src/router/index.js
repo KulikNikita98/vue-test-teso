@@ -1,23 +1,37 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import BookAddPage from '@/pages/BookAddPage.vue';
+import BookEditPage from '@/pages/BookEditPage.vue';
+import MainPage from '@/pages/MainPage.vue';
+import NotFoundPage from '@/pages/NotFoundPage.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'main',
+    component: MainPage,
   },
+
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/add',
+    name: 'add',
+    component: BookAddPage,
   },
+
+  {
+    path: '/edit/:id',
+    name: 'edit',
+    component: BookEditPage,
+  },
+
+  {
+    path: '/:catchAll(.*)',
+    name: 'notFound',
+    component: NotFoundPage,
+  },
+
 ];
 
 const router = new VueRouter({
