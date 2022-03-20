@@ -25,12 +25,15 @@ export default new Vuex.Store({
         }
         return book;
       });
-      console.log(editedBook);
       alert(`Книга "${editedBook.title}" успешно изменена!`);
       localStorage.setItem('books', JSON.stringify(state.books));
     },
   },
-  getters: {},
+  getters: {
+    amountOfBooks(state) {
+      return state.books.length;
+    },
+  },
   actions: {
   },
   modules: {

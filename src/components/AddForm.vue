@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       book: {
+        id: this.$route.params.id,
         title: null,
         author: null,
         dateOfCreation: null,
@@ -62,6 +63,7 @@ export default {
       this.$refs.form.reset();
     },
   },
+
 };
 </script>
 

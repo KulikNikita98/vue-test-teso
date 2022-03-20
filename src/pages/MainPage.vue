@@ -2,7 +2,7 @@
   <section class="list">
     <div class="container list__container">
       <h1 class="list__title">Список Книг</h1>
-      <v-btn @click="$router.push({ name: 'add' })" class="mb-6"
+      <v-btn @click="$router.push({ name: 'add', params: {id: amountOfBooks + 1 } })" class="mb-6"
         >+ Добавить книгу</v-btn
       >
       <BookList class="mb-8" :books="currentBooks" />
@@ -14,6 +14,7 @@
 <script>
 import BookList from '@/components/BookList.vue';
 import BasePagination from '@/components/BasePagination.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -29,10 +30,11 @@ export default {
   },
   watch: {
     '$store.state.books': function (value) {
-      this.currentBooklist = value;
+      this.dataBookList = value;
     },
   },
   computed: {
+    ...mapGetters(['amountOfBooks']),
     currentBooks() {
       const offset = (this.currentPage - 1) * this.booksPerPage;
       return this.dataBookList.slice(offset, offset + this.booksPerPage);
