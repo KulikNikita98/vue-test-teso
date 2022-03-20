@@ -11,16 +11,19 @@
       </v-card-text>
       <v-card-actions class="book__btn-wrapper">
         <v-btn class="book__btn book__btn--edit" @click="navigate(book.id)"> Редактировать</v-btn>
-        <v-btn class="book__btn book__btn--delete">Удалить</v-btn>
+        <v-btn class="book__btn book__btn--delete" @click="deleteBook(book.id)">Удалить</v-btn>
       </v-card-actions>
     </v-card>
   </v-col>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   props: ['book'],
   methods: {
+    ...mapMutations(['deleteBook']),
     navigate(bookId) {
       this.$router.push({ name: 'edit', params: { id: bookId } });
     },

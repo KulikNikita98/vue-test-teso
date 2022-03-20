@@ -2,23 +2,22 @@
   <section class="add">
     <div class="container add__container">
       <BreadCrumbs :items="breadCrumbsItems" />
+      <AddForm/>
     </div>
   </section>
 </template>
 
 <script>
+import AddForm from '@/components/AddForm.vue';
 import BreadCrumbs from '@/components/BreadCrumbs.vue';
 
 export default {
   components: {
     BreadCrumbs,
+    AddForm,
   },
   data() {
     return {
-      title: null,
-      img: null,
-      author: null,
-      dateOfCreation: null,
       breadCrumbsItems: [
         {
           disabled: false,
@@ -29,10 +28,16 @@ export default {
         },
         {
           disabled: true,
-          text: 'Дбавление книг',
+          text: 'Добавление книг',
         },
       ],
     };
   },
 };
 </script>
+
+<style lang="scss">
+ .add {
+   padding: 50px 0;
+ }
+</style>

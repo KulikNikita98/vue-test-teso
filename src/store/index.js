@@ -8,13 +8,29 @@ export default new Vuex.Store({
     books: [],
   },
   mutations: {
-    // deleteBook(state, payload) {
-
-    // },
-    // addBook(state, payload) {
-
-    // },
+    deleteBook(state, id) {
+      state.books = state.books.filter((book) => book.id !== id);
+      localStorage.setItem('books', JSON.stringify(state.books));
+    },
+    addBook(state, book) {
+      state.books.push(book);
+      localStorage.setItem('books', JSON.stringify(state.books));
+      alert(`Книга "${book.title}" успешно добавлена!`);
+    },
+    editBook(state, editedBook) {
+      state.books = state.books.map((book) => {
+        if (editedBook.id === book.id) {
+          console.log('kek');
+          return editedBook;
+        }
+        return book;
+      });
+      console.log(editedBook);
+      alert(`Книга "${editedBook.title}" успешно изменена!`);
+      localStorage.setItem('books', JSON.stringify(state.books));
+    },
   },
+  getters: {},
   actions: {
   },
   modules: {
