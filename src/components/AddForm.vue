@@ -3,7 +3,7 @@
     ref="form"
     class="add__form"
     lazy-validation
-    @submit.prevent="addBook(book);"
+    @submit.prevent="validateForm();"
   >
     <v-text-field
       class="mb-6"
@@ -64,6 +64,12 @@ export default {
       image: [(v) => !!v || 'Укажите путь для обложки книги'],
     };
   },
+  computed: {
+    hasEmptyInputs() {
+      const arrayOfValues = Object.values(this.book);
+      return arrayOfValues.includes(null);
+    },
+  },
   methods: {
     ...mapMutations(['addBook']),
     reset() {
@@ -73,6 +79,18 @@ export default {
       this.book.img = null;
       this.$refs.form.reset();
     },
+    validateForm() {
+      if (this.hasEmptyInputs) {
+        alert('Введите данные полностью!');
+      } else {
+        this.addBook(this.book);
+        this.$router.push({ name: 'main' });
+      }
+    },
+  },
+  created() {
+    console.log(this.hasEmptyInputs);
+    console.log(this.book);
   },
 };
 </script>
