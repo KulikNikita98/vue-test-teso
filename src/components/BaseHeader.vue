@@ -10,7 +10,7 @@
             <router-link :to="{name:'main'}" class="header__link">Список книг</router-link>
           </li>
           <li class="header__item">
-            <router-link :to="{name:'add', params: {id: amountOfBooks + 1 }}"
+            <router-link :to="{name:'add'}"
             class="header__link">Добавление книг</router-link>
           </li>
         </ul>
@@ -20,12 +20,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 
 export default {
-  computed: {
-    ...mapGetters(['amountOfBooks']),
-  },
+
 };
 </script>
 

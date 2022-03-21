@@ -2,7 +2,7 @@
   <section class="add">
     <div class="container add__container">
       <BreadCrumbs :items="breadCrumbsItems" />
-      <AddForm/>
+      <AddForm />
     </div>
   </section>
 </template>
